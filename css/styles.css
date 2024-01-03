@@ -1,0 +1,138 @@
+:root{
+    --yellow: #fbcb04;
+    --blue: #64c3f9; 
+    --red: #d40404;
+    --gray20: #85878a;
+    --gray10: #99a4ae; 
+    --blanco: #ffffff; 
+}
+
+main{
+    display: flex;
+    flex-wrap: wrap; /* Cambia flex-wrap de nowrap a wrap */
+    justify-content: space-around;
+    padding: 20px;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    background-color: var(--blue);
+    margin: 0px;
+}
+
+.wrapper{
+    margin: 10px;
+}
+
+header {
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5); 
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    margin: 16px;
+}
+
+.logo {
+    max-width: 15%;
+    height: auto;
+}
+
+h1{
+    font-size: 32px;
+}
+
+.seccion-tajetas{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-color: red;
+    flex-wrap: wrap;
+    gap: 35px;
+    text-align: center;
+}
+
+.card{
+    border-radius: 8px;
+    border: 1 px solid var(--gray10);
+    width: 200px;
+    height: auto;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: var(--blanco);
+    padding: 6px;
+    transition: transform 0.3s ease;
+   
+}
+
+.card:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    color: var(--red);
+}
+
+.card > img{
+    width: 100%;
+}
+
+button{
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    background-color: var(--red);
+    border-radius: 8px;
+    margin: 10px;
+    border: none;
+    color: var(--blanco);
+}
+
+footer{
+    position: fixed;
+    bottom: 0; 
+    width: 100%;
+    background: var(--blanco);
+    text-align: center;
+    padding: 5px;
+}
+
+#popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    z-index: 1000;
+    text-align: center;
+}
+
+#popup h2{
+    margin: 2px;
+}
+
+#cerrar-popup {
+    margin-top: 10px;
+}
+
+.cerrar-btn{
+    position: absolute;
+    cursor: pointer;
+    color: #d40404;
+    font-size: 25px;
+    z-index: 1000;
+    top: 8px;
+    right: 16px;
+}
+
+.logo-popup{
+    max-width: 30%;
+    height: auto;
+    padding: 0px;
+}
