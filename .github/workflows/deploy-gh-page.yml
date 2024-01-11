@@ -1,0 +1,26 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Create dist folder
+        run: mkdir dist
+
+      - name: Copy files
+        run: cp -r index.html ./css ./images ./js ./dist
+
+      - name: Build and Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          branch: main # The branch the action should deploy to.
+          folder: dist
