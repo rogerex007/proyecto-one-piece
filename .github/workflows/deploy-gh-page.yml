@@ -24,7 +24,7 @@ jobs:
         run: |
           tar \
             --dereference  --hard-dereference \
-            --directory "$RUNNER_TEMP/dist" \
+            --directory "$RUNNER_TEMP/dist/" \
             -cvf "$RUNNER_TEMP/dist.tar" \
             .
 
@@ -35,3 +35,11 @@ jobs:
           path: ${{ runner.temp }}/dist.tar
           retention-days: 1
           if-no-files-found: error
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: gh-pages
+          folder: ${{ runner.temp }}/dist
+          clean: true
+          token: ${{ secrets.GITHUB_TOKEN }}
