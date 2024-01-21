@@ -23,9 +23,10 @@ jobs:
         shell: bash
         run: |
           tar \
-            --diference --hard-dereference \
+            --dereference  --hard-dereference \
             --directory "$RUNNER_TEMP/dist" \
-            -cvf "$RUNNER_TEMP/dist.tar"
+            -cvf "$RUNNER_TEMP/dist.tar" \
+            .
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
