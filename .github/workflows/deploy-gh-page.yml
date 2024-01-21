@@ -14,21 +14,23 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Create dist folder
-        run: mkdir dist
+        run: mkdir "$RUNNER_TEMP/dist"
 
       - name: Copy files
-        run: cp -r index.html ./css ./images ./js ./dist
+        run: cp -r index.html ./css ./images ./js "$RUNNER_TEMP/dist"
 
       - name: Archive artifacts
         shell: bash
         run: |
-          tar \  
-           -czvf dist.tar.gz ${GITHUB_WORKSPACE}/dist
+          tar \
+            --diference --hard-dereference \
+            --directory "$RUNNER_TEMP/dist" \
+            -cvf "$RUNNER_TEMP/dist.tar"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: dist
-          path: ${ runner.temp }/dist.tar.gz
+          path: ${ runner.temp }/dist.tar
           retention-days: 1
           if-no-files-found: error
