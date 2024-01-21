@@ -21,12 +21,14 @@ jobs:
       - name: Copy files
         run: cp -r index.html ./css ./images ./js "$RUNNER_TEMP/dist"
 
+      - name: Enter dist folder
+        run: cd "$RUNNER_TEMP/dist"
+        
       - name: Archive artifacts
         shell: bash
         run: |
           tar \
             --dereference  --hard-dereference \
-            --directory "$RUNNER_TEMP/dist/*" \
             -cvf "$RUNNER_TEMP/dist.tar" \
             .
 
