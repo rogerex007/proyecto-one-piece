@@ -37,9 +37,7 @@ jobs:
           if-no-files-found: error
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.1
+        uses: actions/deploy-pages@v4
         with:
-          branch: gh-pages
-          folder: ${{ runner.temp }}/dist
-          clean: true
+          artifact_name: dist
           token: ${{ secrets.GITHUB_TOKEN }}
