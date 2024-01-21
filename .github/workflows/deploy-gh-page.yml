@@ -32,6 +32,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dist
-          path: ${ runner.temp }/dist.tar
+          path: ${{ runner.temp }}/dist.tar
           retention-days: 1
           if-no-files-found: error
