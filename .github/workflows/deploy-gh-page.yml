@@ -19,8 +19,16 @@ jobs:
       - name: Copy files
         run: cp -r index.html ./css ./images ./js ./dist
 
-      - name: Build and Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.0
+      - name: Archive artifacts
+        shell: bash
+        run: |
+          tar \  
+           -czvf dist.tar.gz ${GITHUB_WORKSPACE}/dist
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
         with:
-          branch: main # The branch the action should deploy to.
-          folder: dist
+          name: dist
+          path: ${ runner.temp }/dist.tar.gz
+          retention-days: 1
+          if-no-files-found: error
